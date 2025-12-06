@@ -1,0 +1,156 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0D1B2A; /* Navy Blue */
+  --ifm-color-primary-dark: #0A1622;
+  --ifm-color-primary-darker: #08121C;
+  --ifm-color-primary-darkest: #050B12;
+  --ifm-color-primary-light: #182C42;
+  --ifm-color-primary-lighter: #203A54;
+  --ifm-color-primary-lightest: #2B4C6E;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #1E90FF; /* Dodger Blue for dark mode */
+  --ifm-color-primary-dark: #1C86EE;
+  --ifm-color-primary-darker: #1A7CEE;
+  --ifm-color-primary-darkest: #1668C6;
+  --ifm-color-primary-light: #329BFF;
+  --ifm-color-primary-lighter: #4AA6FF;
+  --ifm-color-primary-lightest: #66B2FF;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Light Theme Front Page Styles */
+.homepage-light .navbar {
+  display: none !important;
+}
+
+.homepage-light .navbar--fixed-top {
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.front-page-main-light {
+  background-color: #ffffff; /*  background */
+  color: #ffffff; /* Keep text color navy blue */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.front-page-header-light {
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.front-page-nav-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid #EAECEF; /* Light grey border */
+}
+
+.logo-container-light {
+  display: flex;
+  align-items: center;
+}
+
+.book-icon-svg {
+  color: #0D1B2A; /* Navy blue icon */
+}
+
+.logo-text-light {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0D1B2A; /* Navy blue text */
+}
+
+.nav-links-light {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link-item-light {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0D1B2A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link-item-light:hover {
+  color: #1E90FF;
+}
+
+.hero-section-light {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.main-heading-light {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #0D1B2A; /* Navy blue heading */
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.gradient-text-light {
+  background: linear-gradient(90deg, #1E90FF, #0D1B2A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subheading-light {
+  font-size: 1.25rem;
+  max-width: 600px;
+  color: #6E7E8D; /* Greyish blue text */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.cta-button-container-light {
+  margin-top: 1rem;
+}
+
+.cta-button-light {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  background-color: #0D1B2A; /* Navy blue button */
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(13, 27, 42, 0.2);
+}
+
+.cta-button-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(13, 27, 42, 0.3);
+  color: white;
+}

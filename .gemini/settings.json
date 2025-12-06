@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@upstash/context7-mcp"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  },
+
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "github_mcp_pat",
+      "description": "GitHub Personal Access Token",
+      "password": true
+    }
+  ]
+}
