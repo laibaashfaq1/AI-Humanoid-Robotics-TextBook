@@ -21,8 +21,8 @@ export default function Home() {
             {/* HERO SECTION */}
             <div className="hero-section-light">
               <h1 className="main-heading-light">
-                Engineer the Next Generation of
-                <span className="gradient-text-light"> Thinking Machines</span>
+                Build Intelligent Machines That
+                <span className="gradient-text-light">  Move, Sense, and Think</span>
               </h1>
 
               <p className="subheading-light">
