@@ -16,7 +16,7 @@ const config: Config = {
   url: 'https://laibaashfaq1.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/book-hackathon/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -62,7 +62,7 @@ const config: Config = {
       title: 'AI & Humanoid Robotics Book',
       logo: {
         alt: 'Book Icon',
-        src: 'img/book-icon.svg',
+        src: '/img/book-icon.svg', //logo
       },
       items: [
         {
