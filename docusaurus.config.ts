@@ -16,7 +16,7 @@ const config: Config = {
   url: 'https://laibaashfaq1.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/book-hackathon/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -42,7 +42,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/laibaashfaq1/book-hackathon/tree/main/',
+            'https://github.com/laibaashfaq1/AI-Humanoid-Robotics-TextBook',
         },
         blog: false, // Disable the blog plugin
         theme: {
@@ -59,10 +59,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI & Humanoid Robotics Book',
+      title: 'AI & Humanoid Robotics Book',
       logo: {
         alt: 'Book Icon',
-        src: 'img/book-icon.svg',
+        src: '/img/book-icon.svg', //logo
       },
       items: [
         {
@@ -77,47 +77,6 @@ const config: Config = {
           position: 'right',
         },
       ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Modules',
-          items: [
-            {
-              label: 'Module 1: ROS 2',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/laibaashfaq1/book-hackathon',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
