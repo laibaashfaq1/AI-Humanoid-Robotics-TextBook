@@ -1,0 +1,16 @@
+# fastapi
+# uvicorn
+# qdrant-client
+# python-dotenv
+# cohere
+
+fastapi
+uvicorn
+python-dotenv
+cohere
+qdrant-client
+openai
+requests
+beautifulsoup4
+lxml
+html5lib
