@@ -23,15 +23,15 @@ const config: Config = {
   },
 
   // ✅ ADD SITEMAP PLUGIN (VERY IMPORTANT)
-  plugins: [
-    [
-      '@docusaurus/plugin-sitemap',
-      {
-        changefreq: 'weekly',
-        priority: 0.5,
-      },
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     '@docusaurus/plugin-sitemap',
+  //     {
+  //       changefreq: 'weekly',
+  //       priority: 0.5,
+  //     },
+  //   ],
+  // ],
 
   presets: [
     [
