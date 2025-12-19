@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -7,31 +7,31 @@ const config: Config = {
   tagline: 'An exploration of modern robotics and AI',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://laibaashfaq1.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // ✅ VERCEL URL (CORRECT)
+  url: 'https://ai-humanoid-robotics-text-book.vercel.app',
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'laibaashfaq1', // Usually your GitHub org/user name.
-  projectName: 'book-hackathon', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  // ✅ ADD SITEMAP PLUGIN (VERY IMPORTANT)
+  plugins: [
+    [
+      '@docusaurus/plugin-sitemap',
+      {
+        changefreq: 'weekly',
+        priority: 0.5,
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -39,12 +39,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/laibaashfaq1/AI-Humanoid-Robotics-TextBook',
         },
-        blog: false, // Disable the blog plugin
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -53,7 +51,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
@@ -62,7 +59,7 @@ const config: Config = {
       title: 'AI & Humanoid Robotics Book',
       logo: {
         alt: 'Book Icon',
-        src: '/img/book-icon.svg', //logo
+        src: '/img/book-icon.svg',
       },
       items: [
         {
