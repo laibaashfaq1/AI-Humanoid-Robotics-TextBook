@@ -1,7 +1,6 @@
 import time
 import logging
 import os
-
 import cohere
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -35,12 +34,11 @@ co = cohere.Client(COHERE_API_KEY)
 
 app = FastAPI(title="Book RAG Chatbot API")
 
-# ✅ FIX: ADD CORS MIDDLEWARE (VERY IMPORTANT)
+# ✅ CORS FIX (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # allow frontend
-    allow_credentials=True,
-    allow_methods=["*"],      # POST, OPTIONS, etc
+    allow_origins=["*"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -53,48 +51,66 @@ async def ask_question(request: AskRequest):
     start_time = time.time()
 
     try:
-        logger.info(f"Received question: {request.question}")
+        logger.info(f"Question: {request.question}")
 
-        # 1️⃣ Retrieve relevant book chunks
         retrieved_chunks = retrieve_book_content(request.question)
-
-        if not retrieved_chunks:
+        
+        if not retrieved_chunks or all(len(c.text.strip()) < 20 for c in retrieved_chunks):
             return AskResponse(
-                answer="I cannot answer from the book.",
+                answer="I'm sorry, but this topic doesn't seem to be covered in the book. Please feel free to ask me anything about ROS 2, robotics systems, or specific chapters.",
                 retrieved_chunks=[]
             )
 
-        # 2️⃣ Build context (top 3 chunks only)
-        context = "\n\n".join(chunk.text for chunk in retrieved_chunks[:3])
+        # 🔹 Build context
+        context = "\n\n".join(
+            f"[Source: {c.metadata.get('page_title', 'Book')}]\n{c.text}"
+            for c in retrieved_chunks[:3]
+        )
 
-        # 3️⃣ Strict RAG prompt
+        # 🔹 PREAMBLE
+        preamble = """
+You are a helpful AI assistant for the book "AI & Humanoid Robotics". Your purpose is to provide accurate and relevant information based *only* on the content of the book.
+
+When answering, you must follow these rules:
+1.  **Cite Sources:** Always cite the source of your information (e.g., "[Source: Chapter 1]").
+2.  **Stick to the Book:** Do not use any external knowledge. If the book doesn't cover a topic, say so.
+3.  **Be Concise:** Keep your answers clear and to the point.
+4.  **Be Conversational:** Frame your answers in a friendly, helpful way.
+"""
+
+        # 🔹 STRONG RAG PROMPT
         prompt = f"""
-You are a book assistant.
+You are an AI assistant for the book "AI & Humanoid Robotics".
 
-Rules:
-- Answer ONLY using the provided book content.
-- Do NOT use external knowledge.
-- If the answer is not in the book, say exactly:
-  "I cannot answer from the book."
+Instructions:
+- Use ONLY the information from BOOK CONTENT.
+- If the question is partially related, answer ONLY what the book explains.
+- If the topic is not covered, clearly say the book does not explain it.
 
 BOOK CONTENT:
 {context}
 
 QUESTION:
 {request.question}
+
+ANSWER (based only on book):
 """
 
-        # 4️⃣ Cohere Chat
-        response = co.chat(
-            model="command-r",
-            message=prompt,
-            temperature=0.1
-        )
+        try:
+            response = co.chat(message=prompt, preamble=preamble)
+            if len(response.text) > 0:
+                answer = response.text
+            else:
+                logger.error("Response from Cohere API was empty.")
+                answer = "Sorry, I encountered an issue processing your request."
+        except IndexError as e:
+            logger.error(f"An error occurred: {e}")
+            answer = "Sorry, I encountered an issue processing your request."
+        except Exception as e:
+            logger.error(f"An unexpected error occurred: {e}")
+            answer = "Sorry, I encountered an issue processing your request."
 
-        # ✅ Safe response extraction
-        answer = response.message.content[0].text.strip()
-
-        logger.info("Answer generated successfully")
+        logger.info("Answer generated")
 
         return AskResponse(
             answer=answer,
@@ -102,7 +118,7 @@ QUESTION:
         )
 
     except Exception as e:
-        logger.error(f"Error answering question: {e}", exc_info=True)
+        logger.error(e, exc_info=True)
         raise HTTPException(status_code=500, detail="Internal server error")
 
     finally:

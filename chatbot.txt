@@ -1,0 +1,101 @@
+I have completed my project using Spec-Driven development.Below are the requirements:
+
+I have finished the first phase, which is book creation. First, I set the global rules in sp.constitution for the entire project's book creation for the RAG chatbot. Then I created the specify, plan, and tasks for each module.
+
+Now, I am going to inetegerate the RAG Chatbot. I decide to build this in four spec:
+
+Spec 01: Deploy website urls, generate embeddings, and store them in vectore database. For embeddings,I use Cohere models, and for the vector database, I use Qdrant.This spec is complete.
+
+Spec 02: Retrive the extracted dta and test the pipeline to ensure everything is working correctly.This spec is also complete.
+
+Spec 03: Build an Agent using the OpenAI Agents SDK + FastAPI and integerate retrieval capabilities. this spec is also completed as well. 
+
+Spec 04: Integerate the backend  with the frontend, meaning establishing the local connection between them. Now your taskis to generate the prompt for spec-1,I give the reference prompt of the sp.specify then you will be generate prompt for spec-1 
+Here is my reference prompt:
+
+"""/sp.specify Research paper on AI's impact on K-12 classroom efficiency
+
+Target audience: Education administrators evaluating AI adoption
+Focus: Teacher workload reduction and student outcome improvements
+
+Success criteria:
+- Identifies 3+ concrete AI applications with evidence
+- Cites 8+ peer-reviewed academic sources
+- Reader can explain ROI of classroom AI after reading
+- All claims supported by evidence
+
+Constraints:
+- Word count: 3000-5000 words
+- Format: Markdown source, APA citations
+- Sources: Peer-reviewed journals, published within past 10 years
+- Timeline: Complete within 2 weeks
+
+Not building:
+- Comprehensive literature review of entire AI field
+- Comparison of specific AI products/vendors
+- Discussion of ethical concerns (separate paper)
+- Implementation guide or code examples"""
+
+Now your task is to generate prompt of the sp.specify for the spec-1 and also you can technical prompt for the sp.plan shortly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Qdrant Cloud
+# Replace with your actual Qdrant URL and API key
+QDRANT_API_URL="https://a25a9c7e-aae4-404b-9caa-98806502058f.us-east4-0.gcp.cloud.qdrant.io"
+QDRANT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.pTnPP2I9yFlom56wtFygLwC5FpRrk1DUvujxLMXTau8"
+
+# Cohere API
+# Replace with your actual Cohere API key
+COHERE_API_KEY="DXQ6e8dfOsQHnuj6CQ2lCyAh2Jn3pVcqhtH1mNQg"
+
+# Gemini API
+# Replace with your actual Gemini API key
+GEMINI_API_KEY="AIzaSyAunI_LO7esz4fkD83__RbA-2RBPPQ-KvA"
+
+
+
+
+
+
+
+Spec 1: Embedding Pipeline Setup
+
+Goal:
+Extract text from all published book URLs, generate embeddings using Cohere, and store them in Qdrant Cloud for retrieval.
+
+Target:
+Developers building backend retrieval layer.
+
+Focus:
+- URL crwaling and text cleaning
+- Cohere embedding generation
+- Qdrant vector storage
+
+
+
+In the sp.pplan, add this for the initial project setup: create the backend folder and initialize the UV package for the project. Make sure sp.plan prompt will be short 4-5 line with bullet points
+
+/sp.plan - Speco 01:Embedding Pipeline Setup
+- Create a backend folder and initialize project with  ** UV package**.
+- Setup ** Cohere** and **Qdrant** client
+- Fetch, clean and chunk text from deployed URLs
+- Generate embeddings and upsert into Qdrant with metadata
+- Only in the one file name main.py system design(get_all_urls, extract_text_from_url, chunck_text, embed, create_collection named rag_embedding,save_chunck_to_qdrant, and execute in last main function
+
+Here is deploy link
+https://ai-humanoid-robotics-text-book.vercel.app/

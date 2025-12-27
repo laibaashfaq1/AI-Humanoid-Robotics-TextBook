@@ -4,13 +4,12 @@
 # python-dotenv
 # cohere
 
+
 fastapi
 uvicorn
-python-dotenv
 cohere
 qdrant-client
-openai
-requests
+python-dotenv
 beautifulsoup4
-lxml
-html5lib
+requests
+langchain-text-splitters

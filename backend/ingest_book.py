@@ -118,8 +118,8 @@ def main():
 
     # 3. For each page: scrape, clean, and chunk
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
+        chunk_size=1000,
+        chunk_overlap=150,
         length_function=len,
     )
 
