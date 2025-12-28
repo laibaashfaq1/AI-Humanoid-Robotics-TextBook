@@ -28,20 +28,21 @@ const Chatbot = () => {
     setInput('');
     setLoading(true);
 
-    try {
-      const res = await fetch('http://127.0.0.1:8000/ask', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: userMsg.text }),
-      });
+try {
+  const res = await fetch('https://laiba0-chatbot.hf.space/docs', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question: userMsg.text }),
+  });
 
-      const data = await res.json();
+  const data = await res.json();
 
-      setMessages(prev => [
-        ...prev,
-        { text: data.answer || 'No answer found.', sender: 'bot' }
-      ]);
-    } catch {
+  setMessages(prev => [
+    ...prev,
+    { text: data.answer || 'No answer found.', sender: 'bot' }
+  ]);
+}
+ catch {
       setMessages(prev => [
         ...prev,
         { text: "Sorry, I'm having trouble connecting to the server. Please try again later.", sender: 'bot' }

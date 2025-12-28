@@ -37,10 +37,16 @@ app = FastAPI(title="Book RAG Chatbot API")
 # ✅ CORS FIX (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "*",   # or replace * with specific domains later
+        "http://localhost:3000",
+        "https://ai-humanoid-robotics-text-book.vercel.app/"
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # --------------------------------------------------
 # ASK ENDPOINT
